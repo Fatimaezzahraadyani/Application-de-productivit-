@@ -20,10 +20,19 @@
                 <form id="itemForm" class="my-3">
                     <h3 class="text-capitalize mb-4">To Do List</h3>
                     <div class="input-group">
-                        <input type="text" id="itemInput" class="form-control text-capitalize border-success-subtle"
+                        <input type="text" id="itemInput" class="form-control w-auto text-capitalize border-success-subtle"
                         placeholder="Task..."/>
+                        <select id="prioritySelect" class="form-select form-select-sm">
+                            <option value="high">Haute</option>
+                            <option value="medium">Moyenne</option>
+                            <option value="low">Basse</option>
+                        </select>
                         <button type="submit" id="add-task" class="btn btn-outline-success fw-semibold shadow-sm ms-2">Add task</button>
                     </div>
+                    <div class="input-group mt-2">
+                        <span class="input-group-text">Descreption</span>
+                        <textarea class="form-control form-control-sm" aria-label="With textarea form-control-sm"></textarea>
+                      </div>
                     <div class="item-container">
                         <div class="item-list my-5 d-flex 
                         justify-content-between 
@@ -39,6 +48,8 @@
                                  item-icon text-success"></i></a>
                             <a href ="#"><i class="far fa-edit edit-item mx-2 
                                     item-icon text-secondary"></i></a>
+                            <a href="#"><i class="bi bi-eye-fill show-item mx-2 
+                                item-icon text-success"></i></a>
                             <a href="#"><i class="bi bi-stopwatch time-item mx-2 
                                 item-icon text-danger"></i></a>
                             <a href ="#"><i class="far fa-times-circle  delete-item mx-2 
