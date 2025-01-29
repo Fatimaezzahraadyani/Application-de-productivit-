@@ -30,10 +30,12 @@
                         <button type="submit" id="add-task" class="btn btn-outline-success fw-semibold shadow-sm ms-2">Add task</button>
                     </div>
                     <div class="input-group mt-2">
-                        <span class="input-group-text">Descreption</span>
-                        <textarea class="form-control form-control-sm" aria-label="With textarea form-control-sm"></textarea>
+                        <span class="descreption input-group-text">Descreption</span>
+                        <textarea id="itemDescreption" class="form-control form-control-sm" aria-label="With textarea form-control-sm"></textarea>
                       </div>
+                </form>
                     <div class="item-container">
+                        <div class="item-list">
                         <!-- <div class="item my-5 d-flex 
                         justify-content-between 
                         align-items-centre 
@@ -56,7 +58,7 @@
                                     item-icon text-danger"></i></a>
                         </div> -->
                     </div>
-                </form>
+                </div>
                  <button type="button" id="clear-list" 
                  class="btn btn-outline-success my-3 fw-semibold shadow-sm">
                     Clear list
@@ -64,6 +66,6 @@
             </main>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
