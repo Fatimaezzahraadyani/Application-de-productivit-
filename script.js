@@ -1,8 +1,8 @@
 //add eventlistener to do form
 const form = document.querySelector("#itemForm"); //selectionner form
 const itemInput = document.querySelector("#itemInput"); //selecttionner input box (form)
-const itemPriority = document.getElementById("#prioritySelect");
-const itemDescreption = document.querySelector("#itemDescreption");
+const itemPriority = document.getElementById("prioritySelect");
+const itemDescription = document.querySelector("#itemDescreption");
 const itemList = document.querySelector(".item-list");
 const feedback = document.querySelector(".feedback");
 const addItem = document.querySelector("#add-task");
@@ -20,7 +20,7 @@ const getList = function(todoItems){
                         align-items-center
                         border-bottom border-success-subtle">
                 <div class="d-flex gap-1">
-                    <h5 class="text-capitalize">${item.name}<p class="text-muted">${item.descreption ? item.descreption : "No description"}</p><span class="badge bg-${getPriorityColor(item.priority)}">${item.priority}</span></h5>
+                    <h5 class="item-name text-capitalize">${item.name}<p class="text-muted">${item.descreption ? item.descreption : "No description"}</p><span class="badge bg-${getPriorityColor(item.priority)}">${item.priority}</span></h5>
                     <br>
             
                 </div>
@@ -40,28 +40,36 @@ const getList = function(todoItems){
             </div>
             `
             )
-        
+            
+
     });
-    handleItem(item);
+    handleItem();
+ 
 }
 const getPriorityColor = (priority) => {
     if (priority === "high") return "danger";
     if (priority === "medium") return "warning";
-    return "success"; // Low
+    if (priority === "low") return "success";
+    return // "success"; // Low
 };
 //handle item > gerer les taches 
 const handleItem =function (itemName){
-    const items = itemList.querySelectorAll(".item-list");
+    const items = itemList.querySelectorAll(".item");
     items.forEach((item)=>{
-        if(item.querySelector(".item-name").textContent.trim().
-        toLowerCase()===itemName.trim().toLowerCase()){
-            //completed event
-            item.querySelector(".complete-item").addEventListener("click",function(){
-                let itemName = item.querySelector(".item-name");
-                itemName.classList.toggle("completed")
-            })
+        //completed event
+        let taskNameElement = item.querySelector(".item-name");
+        if(taskNameElement) {
+            item.querySelector(".complete-item").addEventListener("click", function () {
+                taskNameElement.classList.toggle("completed");
+        })
+    }
+            
 
-        }
+        //   item.querySelector(".complete-item").addEventListener("click",function(){
+        //     taskNameElement.classList.toggle("completed");
+        //   })
+
+        // }
         //edit task
         //remove
 
@@ -86,7 +94,12 @@ form.addEventListener("submit",function(e){
         setLocalStorage(todoItems);
         getList(todoItems);
         sendFeedback("Task added successfully", "text-success");
+         
+        itemInput.value="";
+        document.getElementById("itemDescreption").value="";
+        document.getElementById("prioritySelect").value="";
     }
+   
 })
 //send feedback 
 function sendFeedback(text,className){
@@ -102,3 +115,13 @@ function sendFeedback(text,className){
 const setLocalStorage=function(todoItems){
     localStorage.setItem("todoItems",JSON.stringify(todoItems));
 };
+const getLocalStorage=function(){
+    const todoStorage=localStorage.getItem("todoItems");
+    if(todoStorage===null ){
+        todoItems=[];
+    }else{
+        todoItems=JSON.parse(todoStorage);
+        getList(todoItems); 
+    }
+};
+getLocalStorage(); 
