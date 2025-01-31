@@ -6,6 +6,7 @@ const itemDescreption = document.querySelector("#itemDescreption");
 const itemList = document.querySelector(".item-list");
 const feedback = document.querySelector(".feedback");
 const addItem = document.querySelector("#add-task");
+const clearbtn = document.querySelector(".clearbtn")
 
 let todoItems = [];
 
@@ -142,6 +143,14 @@ function sendFeedback(text, className) {
         feedback.innerHTML = "Write task description";
     }, 3000);
 }
+//clear all 
+clearbtn.onclick=()=>
+    {
+    confirm("Are you sure to clear list ?") &&
+    (todoItems=[], localStorage.clear,getList(todoItems));
+};
+
+
 
 // Local storage
 const setLocalStorage = function(todoItems) {
