@@ -6,7 +6,8 @@ const itemDescreption = document.querySelector("#itemDescreption");
 const itemList = document.querySelector(".item-list");
 const feedback = document.querySelector(".feedback");
 const addItem = document.querySelector("#add-task");
-const clearbtn = document.querySelector(".clearbtn")
+const clearbtn = document.querySelector(".clearbtn");
+const completeBtn = document.querySelectorAll(".complete-item");
 
 let todoItems = [];
 
@@ -25,9 +26,11 @@ const getList = function(todoItems) {
                     <a href="#" class="edit-item mx-2 item-icon text-secondary" data-index="${index}">
                         <i class="far fa-edit"></i>
                     </a>
-                    <a href="#" class="complete-item mx-2 item-icon text-success">
-                        <i class="far fa-check-circle"></i>
+                    <a href ="#"><i class="far fa-check-circle complete-item mx-2 
+                                 item-icon text-success"></i>
                     </a>
+                    <a href="#"><i class="bi bi-stopwatch time-item mx-2 
+                                item-icon text-danger"></i></a>
                     <a href="#" class="delete-item mx-2 item-icon text-danger" data-index="${index}">
                         <i class="far fa-times-circle"></i>
                     </a>
@@ -45,8 +48,8 @@ const getPriorityColor = (priority) => {
     return "success"; // Low
 };
 
-// Handle item (edit, complete,delete, .)
-const handleItem = function() {
+// Handle item (edit, complete,delete, timer)
+const handleItem = function(itemName) {
     const items = itemList.querySelectorAll(".item");
 
     items.forEach((item) => {
@@ -59,7 +62,11 @@ const handleItem = function() {
                     taskNameElement.classList.toggle("completed");
             })
         }
-
+        setLocalStorage(todoItems);
+        
+                }
+        )
+        
         const editIcon = item.querySelector(".edit-item");
         if (editIcon) {
             editIcon.addEventListener("click", function() {
@@ -103,9 +110,10 @@ const handleItem = function() {
                 getList(todoItems);
             });
         }
-    });
-})
+    }
+);
 }
+
 
 // Add task
 form.addEventListener("submit", function(e) {

@@ -1,10 +1,9 @@
 body{
-    background: url("/img/pexels-karolina-grabowska-5208363.jpg");
+    background: url("/Application-de-productivit-/img/pexels-karolina-grabowska-5208363.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
-.completed-item {
+.completed{
     text-decoration: line-through;
-    color: gray;
-    opacity: 0.7;
+    color: gray;  /* Optionnel : change la couleur du texte */
 }
