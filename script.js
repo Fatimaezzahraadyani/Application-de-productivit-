@@ -1,4 +1,4 @@
-//add eventlistener to do form
+//add eventlistener to the form
 const form = document.querySelector("#itemForm");
 const itemInput = document.querySelector("#itemInput");
 const itemPriority = document.getElementById("prioritySelect");
@@ -8,6 +8,11 @@ const feedback = document.querySelector(".feedback");
 const addItem = document.querySelector("#add-task");
 const clearbtn = document.querySelector(".clearbtn");
 const completeBtn = document.querySelectorAll(".complete-item");
+//add eventlistener to the timer 
+const startTimerButton = document.getElementById("startTimer");
+const pauseButton = document.getElementById("pauseButton");
+const stopTimerButton = document.getElementById("stopTimer");
+const timerDisplay = document.getElementById("timerDisplay");
 
 let todoItems = [];
 
