@@ -100,6 +100,16 @@ const handleItem = function(itemName) {
             });
         }
 
+        //timer
+        const timerPopup = new bootstrap.Modal(document.getElementById("timerPopup"));
+        const timerButtons = document.querySelectorAll(".time-item");
+        timerButtons.forEach(button =>{
+            button.addEventListener("click",function(e){
+                e.preventDefault();
+                timerPopup.show();
+            })
+        });
+
             //suppression de tache
         const deleteIcon = item.querySelector(".delete-item");
         if (deleteIcon) {
