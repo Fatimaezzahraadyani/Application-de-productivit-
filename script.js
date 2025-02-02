@@ -133,10 +133,21 @@ const handleItem = function(itemName) {
                 }
             },1000);
         }
+            function pauseTimer(){
+                remainingTime=300;
+                startTimer();
+            }
+            function stopTimer(){
+                clearInterval(timerInterval);
+                remainingTime=1500;
+                timerDisplay.textContent='25:00';
+            }
         startTimerButton.addEventListener('click', () => {
             timerPopup.show();  // Afficher le modal
             startTimer(); // Démarrer le timer de 25 minutes
         });
+        pauseButton.addEventListener('click',pauseTimer);
+        stopTimerButton.addEventListener('click',stopTimer);
         
         
         //suppression de tache
