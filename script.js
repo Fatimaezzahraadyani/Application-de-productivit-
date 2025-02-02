@@ -14,6 +14,9 @@ const pauseButton = document.getElementById("pauseButton");
 const stopTimerButton = document.getElementById("stopTimer");
 const timerDisplay = document.getElementById("timerDisplay");
 
+let timerInterval;
+let remainingTime = 1500;
+
 let todoItems = [];
 
 //get item list
@@ -115,7 +118,28 @@ const handleItem = function(itemName) {
             })
         });
 
-            //suppression de tache
+        function startTimer(){
+            if(timerInterval)clearInterval(timerInterval);
+            timerInterval=setInterval(()=>{
+                remainingTime--;
+
+                let minutes = Math.floor(remainingTime/60);
+                let seconds = remainingTime % 60;
+
+                timerDisplay.textContent=`${minutes < 10 ? '0':'' }${minutes}:${seconds<10 ? '0':''}${seconds}`;
+                if(remainingTime<=0){
+                    clearInterval(timerInterval);
+                    alert("Time Passed !")
+                }
+            },1000);
+        }
+        startTimerButton.addEventListener('click', () => {
+            timerPopup.show();  // Afficher le modal
+            startTimer(); // Démarrer le timer de 25 minutes
+        });
+        
+        
+        //suppression de tache
         const deleteIcon = item.querySelector(".delete-item");
         if (deleteIcon) {
             deleteIcon.addEventListener("click", function() {
